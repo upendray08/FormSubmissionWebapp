@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col">
+      <h1>Task 2</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form (submit)="onAddData(form)" (reset)="onResetData(form)" #form="ngForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required ngModel #name="ngModel">
+          <div class="text-danger" *ngIf="submitted && name.invalid">Please provide a valid name.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required ngModel email #email="ngModel">
+          <div class="text-danger" *ngIf="submitted && email.invalid">Please provide a valid email.</div>
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" min="1000000000" max="9999999999" required ngModel #phoneNumber="ngModel">
+          <div class="text-danger" *ngIf="submitted && phoneNumber.invalid">Please provide a valid phone number.</div>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" name="address" rows="3" required ngModel #address="ngModel"></textarea>
+          <div class="text-danger" *ngIf="submitted && address.invalid">Please provide a valid address.</div>
+        </div>
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" id="dob" name="dob" required ngModel #dob="ngModel">
+          <div class="text-danger" *ngIf="submitted && dob.invalid">Please provide a valid date of birth.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-primary" style="margin-left: 10px;">Reset</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date of Birth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of table">
+            <th scope="row">{{ row.name }}</th>
+            <td>{{ row.email }}</td>
+            <td>{{ row.phoneNumber }}</td>
+            <td>{{ row.address }}</td>
+            <td>{{ row.dob }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
